@@ -67,13 +67,13 @@ $ git config --global user.email jesus@abarca.xyz
 ---
 ## Getting a repo
 
-* Initialize a new repo
+Initialize a new repo
 ```bash
 $ git init
 ```
 or:
 
-* Clone an existing repo
+Clone an existing repo
 ```bash
 $ git clone https://github.com/jesusabarca/basic-git.git
 ```
