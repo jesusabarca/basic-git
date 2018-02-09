@@ -248,19 +248,133 @@ Changes not staged for commit:
 <pre><code class="language-bash">$ rm slides.md
 </code></pre>
 
+<pre><code class="language-bash">$ git status
+On branch master
+Changes not staged for commit:
+  (use "git add/rm &lt;file&gt;..." to update what will be committed)
+  (use "git checkout -- &lt;file&gt;..." to discard changes in working directory)
+
+        deleted:    slides.md
+
+no changes added to commit (use "git add" and/or "git commit -a")
+</code></pre>
+
 <pre><code class="language-bash">$ git add slides.md
+</code></pre>
+
+<pre><code class="language-bash">$ git status
+On branch master
+Changes to be committed:
+  (use "git reset HEAD &lt;file&gt;..." to unstage)
+
+        deleted:   slides.md
 </code></pre>
 
 </section>
 <section>
 
-<pre><code class="language-ruby">[:a, :b].each do |a|
-  puts a
-end
+<h2>Removing files</h2>
+<h3>(with one command)</h3>
+
+<pre><code class="language-bash">$ git rm slides.md
 </code></pre>
 
-<h1>Slide 2</h1>
+<pre><code class="language-bash">$ git status
+On branch master
+Changes to be committed:
+  (use "git reset HEAD &lt;file&gt;..." to unstage)
 
-<p>Is less important</p>
+        deleted:   slides.md
+</code></pre>
+
+</section>
+<section>
+
+<h2>Moving files</h2>
+
+<pre><code class="language-bash">$ mv slides.md slides2.md
+$ git rm slides.md
+$ git status
+On branch master
+Changes to be committed:
+  (use "git reset HEAD &lt;file&gt;..." to unstage)
+
+        deleted:    slides.md
+
+Untracked files:
+  (use "git add &lt;file&gt;..." to include in what will be committed)
+
+        slides2.md
+</code></pre>
+
+<pre><code class="language-bash">$ git add slides2.md
+$ git status
+On branch master
+Changes to be committed:
+  (use "git reset HEAD &lt;file&gt;..." to unstage)
+
+        renamed:    slides.md -&gt; slides2.md
+</code></pre>
+
+</section>
+<section>
+
+<h2>Moving files</h2>
+<h3>(with one command)</h3>
+
+<pre><code class="language-bash">$ git mv slides.md  slides2.md
+</code></pre>
+
+<pre><code class="language-bash">$ git status
+On branch master
+Changes to be committed:
+  (use "git reset HEAD &lt;file&gt;..." to unstage)
+
+        renamed:    slides.md -&gt; slides2.md
+</code></pre>
+
+</section>
+<section>
+
+<h2>Fixing thingz</h2>
+
+</section>
+<section>
+
+<h2>Reverting changes</h2>
+<h3>(on the working directory)</h3>
+
+<pre><code class="language-bash">$ git checkout -- slides.md
+</code></pre>
+
+</section>
+<section>
+
+<h2>Reverting changes</h2>
+<h3>(already stagged)</h3>
+
+<p>For all files</p>
+<pre><code class="language-bash">$ git reset
+$ git reset HEAD
+</code></pre>
+
+<p>For specific files</p>
+<pre><code class="language-bash">$ git reset HEAD slides.md
+</code></pre>
+
+<p>😱 Note: be careful with</p>
+<pre><code class="language-bash">$ git reset --hard
+</code></pre>
+<p>It will also revert all changes in the working directory</p>
+
+</section>
+<section>
+
+<h2>Reverting changes</h2>
+<h3>(already commited)</h3>
+
+<pre><code class="language-bash">$ git commit --amend
+</code></pre>
+<p>🤔 Note: it will also include all new staged changes</p>
 
 </section>

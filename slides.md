@@ -211,16 +211,130 @@ $ rm slides.md
 ```
 
 ```bash
+$ git status
+On branch master
+Changes not staged for commit:
+  (use "git add/rm <file>..." to update what will be committed)
+  (use "git checkout -- <file>..." to discard changes in working directory)
+
+        deleted:    slides.md
+
+no changes added to commit (use "git add" and/or "git commit -a")
+```
+
+```bash
 $ git add slides.md
 ```
 
----
-```ruby
-[:a, :b].each do |a|
-  puts a
-end
+```bash
+$ git status
+On branch master
+Changes to be committed:
+  (use "git reset HEAD <file>..." to unstage)
+
+        deleted:   slides.md
 ```
 
-# Slide 2
+---
+## Removing files
+### (with one command)
 
-Is less important
+```bash
+$ git rm slides.md
+```
+
+```bash
+$ git status
+On branch master
+Changes to be committed:
+  (use "git reset HEAD <file>..." to unstage)
+
+        deleted:   slides.md
+```
+
+---
+## Moving files
+
+```bash
+$ mv slides.md slides2.md
+$ git rm slides.md
+$ git status
+On branch master
+Changes to be committed:
+  (use "git reset HEAD <file>..." to unstage)
+
+        deleted:    slides.md
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+
+        slides2.md
+```
+
+```bash
+$ git add slides2.md
+$ git status
+On branch master
+Changes to be committed:
+  (use "git reset HEAD <file>..." to unstage)
+
+        renamed:    slides.md -> slides2.md
+```
+
+---
+## Moving files
+### (with one command)
+
+```bash
+$ git mv slides.md  slides2.md
+```
+
+```bash
+$ git status
+On branch master
+Changes to be committed:
+  (use "git reset HEAD <file>..." to unstage)
+
+        renamed:    slides.md -> slides2.md
+```
+
+---
+## Fixing thingz
+
+---
+## Reverting changes
+### (on the working directory)
+
+```bash
+$ git checkout -- slides.md
+```
+
+---
+## Reverting changes
+### (already stagged)
+
+For all files
+```bash
+$ git reset
+$ git reset HEAD
+```
+
+For specific files
+```bash
+$ git reset HEAD slides.md
+```
+
+😱 Note: be careful with
+```bash
+$ git reset --hard
+```
+It will also revert all changes in the working directory
+
+---
+## Reverting changes
+### (already commited)
+
+```bash
+$ git commit --amend
+```
+🤔 Note: it will also include all new staged changes
